@@ -1,41 +1,33 @@
 import { useState } from "react";
 import "./App.css";
+import Card from "./Card";
 
 function App() {
-  const [bgcolor, setbgColor] = useState("gray");
-
-  const changeBgColorToBlue = (e) => {
-    setbgColor("blue");
-  };
+  const [count, setCount] = useState(0);
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen transition-colors duration-500"
-      style={{ background: bgcolor }}
-    >
-      <div className="fixed bottom-4 bg-gray-700 p-4 rounded-lg shadow-lg">
-        <div className="space-x-4">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={changeBgColorToBlue}
-          >
-            Blue
-          </button>
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded"
-            onClick={() => setbgColor("green")}
-          >
-            Green
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded"
-            onClick={() => setbgColor("red")}
-          >
-            Red
-          </button>
-        </div>
+    <>
+      <div className="bg-amber-500 bg-center">
+        <h1 className="text-emerald-400 text-5xl text-center">React Counter</h1>
+        <button
+          className="rounded-2xl mx-1 my-1 px-2 py-1 bg-emerald-500 text-white"
+          onClick={() =>
+            setCount((prev) => {
+              return prev + 1;
+            })
+          }
+        >
+          Increment
+        </button>
+        <button
+          className="rounded-2xl mx-1 my-1 px-2 py-1 bg-emerald-500 text-white "
+          onClick={() => setCount(count - 1)}
+        >
+          Decrement
+        </button>
+        <p>Count: {count}</p>
       </div>
-    </div>
+    </>
   );
 }
 
